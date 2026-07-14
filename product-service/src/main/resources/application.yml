@@ -1,0 +1,35 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: product-service
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/product_db}
+    username: ${SPRING_DATASOURCE_USERNAME:htpt_admin}
+    password: ${SPRING_DATASOURCE_PASSWORD:htpt_secret_2026}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: false
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+  data:
+    redis:
+      host: ${SPRING_DATA_REDIS_HOST:localhost}
+      port: ${SPRING_DATA_REDIS_PORT:6379}
+  cache:
+    type: redis
+    redis:
+      time-to-live: 300000
+
+logging:
+  level:
+    com.htpt.product: INFO
+
+springdoc:
+  api-docs:
+    path: /api/products/v3/api-docs
+  swagger-ui:
+    path: /api/products/swagger-ui.html
