@@ -1,14 +1,6 @@
-<<<<<<< HEAD
 Hệ thống E-Commerce Microservices được xây dựng dựa trên kiến trúc phân tán (Distributed Architecture), sử dụng Spring Boot cho Backend, React (Vite) cho Frontend và được thiết kế để triển khai toàn diện trên môi trường Kubernetes.
 
 ## Kiến trúc hệ thống
-=======
-# 🛒 E-Commerce Microservices System on Kubernetes
-
-Hệ thống E-Commerce Microservices được xây dựng dựa trên kiến trúc phân tán (Distributed Architecture), sử dụng Spring Boot cho Backend, React (Vite) cho Frontend và được thiết kế để triển khai toàn diện trên môi trường Kubernetes.
-
-## 🏗 Kiến trúc hệ thống
->>>>>>> 65636fd (update: script database)
 - **Frontend:** React.js (Vite)
 - **API Gateway:** Spring Cloud Gateway (Xử lý định tuyến và xác thực JWT)
 - **Microservices:** User, Product, Order, Inventory, Notification
@@ -18,11 +10,7 @@ Hệ thống E-Commerce Microservices được xây dựng dựa trên kiến tr
 
 ---
 
-<<<<<<< HEAD
 ## Hướng dẫn Triển khai (Step-by-Step)
-=======
-## 🚀 Hướng dẫn Triển khai (Step-by-Step)
->>>>>>> 65636fd (update: script database)
 
 ### Yêu cầu hệ thống (Prerequisites)
 - Đã cài đặt **Docker** để build image.
@@ -34,11 +22,7 @@ Hệ thống E-Commerce Microservices được xây dựng dựa trên kiến tr
 ---
 
 ### Bước 1: Clone mã nguồn
-<<<<<<< HEAD
 Tải mã nguồn từ Github về máy:
-=======
-Tải mã nguồn từ Github về máy của bạn:
->>>>>>> 65636fd (update: script database)
 ```bash
 git clone https://github.com/datnc2002/sales_system_microservice.git
 cd sales_system_microservice
@@ -69,11 +53,7 @@ docker push congdat0703/htpt-user-service:v1
 
 # Tương tự cho product-service, order-service, inventory-service, notification-service...
 ```
-<<<<<<< HEAD
 *Lưu ý: Hãy đảm bảo bạn đã vào các file yaml trong thư mục `k8s/` và cập nhật lại đường dẫn image thành tên repository của bạn trước khi sang bước tiếp theo.*
-=======
-*⚠️ Lưu ý: Hãy đảm bảo bạn đã vào các file yaml trong thư mục `k8s/` và cập nhật lại đường dẫn image thành tên repository của bạn trước khi sang bước tiếp theo.*
->>>>>>> 65636fd (update: script database)
 
 ---
 
@@ -112,11 +92,7 @@ kubectl apply -f k8s/frontend/frontend.yaml
 ---
 
 ### Bước 5: Cấu hình Firewall (Chỉ dành cho GCP/Cloud VM)
-<<<<<<< HEAD
 Do K8s sử dụng NodePort để Public dịch vụ ra ngoài mạng internet, cần yêu cầu Cloud Provider (ví dụ Google Cloud) mở các cổng Firewall tương ứng:
-=======
-Do K8s sử dụng NodePort để Public dịch vụ ra ngoài mạng internet, bạn cần yêu cầu Cloud Provider (ví dụ Google Cloud) mở các cổng Firewall tương ứng:
->>>>>>> 65636fd (update: script database)
 
 - **Mở port 30000 cho Frontend web:**
   ```bash
@@ -134,11 +110,7 @@ Do K8s sử dụng NodePort để Public dịch vụ ra ngoài mạng internet, 
 ---
 
 ### Bước 6: Nạp dữ liệu mẫu (Seeding)
-<<<<<<< HEAD
 Sau khi cụm khởi chạy hoàn tất, Database sẽ trống. Sử dụng script `seed.js` để tạo dữ liệu mặc định (Lưu ý: Mở file `seed.js` và cập nhật biến `apiBase` thành IP Server của bạn).
-=======
-Sau khi cụm khởi chạy hoàn tất, Database của bạn sẽ trống. Sử dụng script `seed.js` để tạo dữ liệu mặc định (Lưu ý: Mở file `seed.js` và cập nhật biến `apiBase` thành IP Server của bạn).
->>>>>>> 65636fd (update: script database)
 
 ```bash
 node seed.js
@@ -150,10 +122,5 @@ Script này sẽ tự động:
 4. Khởi tạo kho hàng (Inventory) bằng 50 cho mỗi sản phẩm.
 
 ---
-<<<<<<< HEAD
-=======
-
-## 🛠 Công cụ quản trị khuyên dùng
->>>>>>> 65636fd (update: script database)
 - Để theo dõi log khi lỗi: `kubectl logs deployment/order-service -n htpt`
 - Để kết nối và xem dòng chảy dữ liệu Database: Tải phần mềm **DBeaver**, kết nối vào IP máy chủ với port `30543`, bạn sẽ có thể nhìn thấy tồn kho bị trừ theo thời gian thực mỗi khi có Order mới nhờ vào kiến trúc giao tiếp Kafka Event-driven.
