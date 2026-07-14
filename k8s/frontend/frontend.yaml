@@ -15,15 +15,15 @@ spec:
     spec:
       containers:
         - name: frontend
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-frontend:v2
           ports:
             - containerPort: 3000
           env:
-            # Sẽ cần lấy External IP của node để điền vào đây, hoặc dùng NodePort IP.
-            # Vì bạn có 3 nodes, bạn có thể dùng IP của bất kỳ node nào.
             - name: VITE_API_URL
-              value: "http://34.21.179.15:30080/api"
+              valueFrom:
+                secretKeyRef:
+                  name: htpt-secrets
+                  key: VITE_API_URL
           resources:
             requests:
               memory: "128Mi"

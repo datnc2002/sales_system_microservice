@@ -16,7 +16,6 @@ spec:
     spec:
       containers:
         - name: user-service
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-user-service:v1
           ports:
             - containerPort: 8081
@@ -84,7 +83,6 @@ spec:
     spec:
       containers:
         - name: product-service
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-product-service:v1
           ports:
             - containerPort: 8082
@@ -142,7 +140,6 @@ spec:
     spec:
       containers:
         - name: order-service
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-order-service:v1
           ports:
             - containerPort: 8083
@@ -204,7 +201,6 @@ spec:
     spec:
       containers:
         - name: inventory-service
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-inventory-service:v1
           ports:
             - containerPort: 8084
@@ -262,7 +258,6 @@ spec:
     spec:
       containers:
         - name: notification-service
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-notification-service:v1
           ports:
             - containerPort: 8085

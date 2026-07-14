@@ -61,10 +61,16 @@ docker push congdat0703/htpt-user-service:v1
 Hạ tầng bao gồm Database (Postgres), Queue (Kafka), và Cache (Redis). K8s sẽ chạy chúng trước để các Microservices có thể kết nối vào.
 
 **1. Khởi tạo Namespace & Mật khẩu (Secrets)**
-Tạo một file `.env` chứa mật khẩu thực tế (xem hướng dẫn ở mục sau) và đưa vào K8s Secret:
+Hệ thống sử dụng K8s Secrets lấy trực tiếp từ file `.env` để bảo mật (không lưu hardcode mật khẩu hay IP lên Git). 
+Bạn cần tạo file `.env` từ file `.env-example` mẫu có sẵn:
 ```bash
-kubectl create namespace htpt
-kubectl create secret generic htpt-secrets --from-env-file=.env -n htpt
+cp .env-example .env
+```
+Mở file `.env` vừa tạo và điền các thông số thực tế của bạn (IP của Node K8s, mật khẩu DB...). 
+Sau đó, nạp toàn bộ cấu hình bảo mật vào K8s bằng lệnh sau:
+```bash
+kubectl apply -f k8s/namespace-and-secrets.yaml
+kubectl create secret generic htpt-secrets --from-env-file=.env -n htpt --dry-run=client -o yaml | kubectl apply -f -
 ```
 
 **2. Khởi chạy Postgres & Kafka & Redis**

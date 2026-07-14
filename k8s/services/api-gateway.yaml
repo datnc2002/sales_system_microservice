@@ -15,7 +15,6 @@ spec:
     spec:
       containers:
         - name: api-gateway
-          # CHÚ Ý: Đổi tên registry docker hub của bạn ở đây
           image: congdat0703/htpt-api-gateway:v1
           ports:
             - containerPort: 8080
